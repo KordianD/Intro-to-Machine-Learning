@@ -11,23 +11,27 @@
 """
     
 import sys
-from time import time
 sys.path.append("../tools/")
 from email_preprocess import preprocess
-
+from time import time
 
 ### features_train and features_test are the features for the training
 ### and testing datasets, respectively
 ### labels_train and labels_test are the corresponding item labels
 features_train, features_test, labels_train, labels_test = preprocess()
 
+from sklearn.naive_bayes import GaussianNB
 
+classifier = GaussianNB()
 
+t0 = time()
+classifier.fit(features_train, labels_train)
 
-#########################################################
-### your code goes here ###
+print("training time:", round(time()-t0, 3), "s")
 
+t1 = time()
+prediction = classifier.predict(features_test)
+print("predicting time:", round(time()-t1, 3), "s")
 
-#########################################################
-
+print(classifier.score(features_test, labels_test))
 
