@@ -87,7 +87,6 @@ min_salary_value, max_salary_value = min_max(finance_features, 0)
 print('Min : ' + str(min_salary_value))
 print('Max : ' + str(max_salary_value))
 
-
 scaler = MinMaxScaler()
 finance_features = scaler.fit_transform(finance_features)
 features_test = np.array([[200000, 1000000]]).astype(float)
