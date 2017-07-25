@@ -3,6 +3,8 @@
 import matplotlib.pyplot as plt
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture
+from sklearn import ensemble
+from time import time
 
 features_train, labels_train, features_test, labels_test = makeTerrainData()
 
@@ -27,18 +29,20 @@ plt.ylabel("grade")
 plt.show()
 ################################################################################
 
+classifier = ensemble.AdaBoostClassifier()
 
-### your code here!  name your classifier object clf if you want the 
-### visualization code (prettyPicture) to show you the decision boundary
+t0 = time()
+classifier.fit(features_train, labels_train)
+print("training time:", round(time()-t0, 3), "s")
 
+t1 = time()
+prediction = classifier.predict(features_test)
+print("predicting time:", round(time()-t1, 3), "s")
 
-
-
-
-
+print(classifier.score(features_test, labels_test))
 
 
 try:
-    prettyPicture(clf, features_test, labels_test)
+    prettyPicture(classifier, features_test, labels_test)
 except NameError:
     pass
