@@ -24,7 +24,6 @@ with open(destination, 'wb') as output:
         outsize += len(line) + 1
         output.write(line + str.encode('\n'))
 
-print("Done. Saved %s bytes." % (len(content)-outsize))
 
 def preprocess(words_file = destination, authors_file="../tools/email_authors.pkl"):
     """ 
