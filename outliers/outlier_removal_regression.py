@@ -7,7 +7,7 @@ import pickle
 
 from outlier_cleaner import outlierCleaner
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import  LinearRegression
+from sklearn.linear_model import LinearRegression
 import numpy as np
 
 def transform(org, destination):
