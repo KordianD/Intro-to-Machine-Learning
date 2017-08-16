@@ -11,11 +11,8 @@
 """
 
 import pickle
-import sys
 from sklearn.tree import DecisionTreeClassifier
-
-sys.path.append("../tools/")
-from feature_format import featureFormat, targetFeatureSplit
+from tools.feature_format import *
 from sklearn.model_selection import train_test_split
 
 data_dict = pickle.load(open("../final_project/final_project_dataset_unix.pkl", "rb"))
@@ -33,8 +30,6 @@ labels, features = targetFeatureSplit(data)
 
 features_train, features_test, labels_train, labels_test = train_test_split(features, labels, random_state=42,
                                                                             test_size=0.3)
-																			
-print(len(labels_test))
 
 classifier = DecisionTreeClassifier()
 classifier.fit(features_train, labels_train)

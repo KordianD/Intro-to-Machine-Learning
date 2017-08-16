@@ -11,7 +11,7 @@
 import sys
 from time import time
 sys.path.append("../tools/")
-from email_preprocess import preprocess
+from tools.email_preprocess import preprocess
 from sklearn import svm
 
 
